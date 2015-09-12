@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Function _WinAPI_ShowWindow</title>
+<meta charset="utf-8">
+<link href="../css/default.css" rel="stylesheet">
+</head>
+
+<body>
+<h1 class="small">Function Reference</h1>
+<hr style="height:0px">
+<h1>_WinAPI_ShowWindow</h1>
+<p class="funcdesc">Sets the specified window's show state<br /></p>
+<p class="codeheader">
+#include &lt;WinAPI.au3&gt;<br />
+_WinAPI_ShowWindow ( $hWnd [, $iCmdShow = 5] )<br />
+</p>
+
+<h2>Parameters</h2>
+<table>
+<tr>
+<td style="width:15%">$hWnd</td>
+<td style="width:85%">Handle of window</td>
+</tr>
+<tr>
+<td>$iCmdShow</td>
+<td><strong>[optional]</strong> Specifies how the window is to be shown:<br />
+@SW_HIDE - Hides the window and activates another window<br />
+@SW_MAXIMIZE - Maximizes the specified window<br />
+@SW_MINIMIZE - Minimizes the specified window and activates the next top-level window in the Z order<br />
+@SW_RESTORE - Activates and displays the window<br />
+@SW_SHOW - Activates the window and displays it in its current size and position<br />
+@SW_SHOWDEFAULT - Sets the show state based on the SW_ flag specified in the STARTUPINFO structure<br />
+@SW_SHOWMAXIMIZED - Activates the window and displays it as a maximized window<br />
+@SW_SHOWMINIMIZED - Activates the window and displays it as a minimized window<br />
+@SW_SHOWMINNOACTIVE - Displays the window as a minimized window<br />
+@SW_SHOWNA - Displays the window in its current state<br />
+@SW_SHOWNOACTIVATE - Displays a window in its most recent size and position<br />
+@SW_SHOWNORMAL - Activates and displays a window</td>
+</tr>
+</table>
+
+<h2>Return Value</h2>
+<table class="noborder">
+<tr>
+<td style="width:10%" class="valign-top">Success:</td>
+<td style="width:90%">True</td>
+</tr>
+<tr>
+<td class="valign-top">Failure:</td>
+<td>False</td>
+</tr>
+</table>
+
+<h2>See Also</h2>
+<p>Search <a href="http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k(ShowWindow);k(DevLang-C);k(TargetOS-WINDOWS)&rd=true">ShowWindow</a> in MSDN  Library.
+</p>
+
+</body>
+</html>

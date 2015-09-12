@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Function _WinAPI_WideCharToMultiByte</title>
+<meta charset="utf-8">
+<link href="../css/default.css" rel="stylesheet">
+</head>
+
+<body>
+<h1 class="small">Function Reference</h1>
+<hr style="height:0px">
+<h1>_WinAPI_WideCharToMultiByte</h1>
+<p class="funcdesc">Converts a Unicode string to a multibyte string<br /></p>
+<p class="codeheader">
+#include &lt;WinAPI.au3&gt;<br />
+_WinAPI_WideCharToMultiByte ( $vUnicode [, $iCodePage = 0 [, $bRetString = True]] )<br />
+</p>
+
+<h2>Parameters</h2>
+<table>
+<tr>
+<td style="width:15%">$vUnicode</td>
+<td style="width:85%">String, DllStruct or Pointer to a byte array structure containing Unicode text to be converted</td>
+</tr>
+<tr>
+<td>$iCodePage</td>
+<td><strong>[optional]</strong> Code page to use in performing the conversion:<br />
+&nbsp;&nbsp;&nbsp; 0 - The current system Windows ANSI code page<br />
+&nbsp;&nbsp;&nbsp; 1 - The current system OEM code page<br />
+&nbsp;&nbsp;&nbsp; 2 - The current system Macintosh code page<br />
+&nbsp;&nbsp;&nbsp; 3 - The Windows ANSI code page for the current thread<br />
+&nbsp;&nbsp;&nbsp; 42 - Symbol code page<br />
+&nbsp;&nbsp;&nbsp; 65000 - UTF-7<br />
+&nbsp;&nbsp;&nbsp; 65001 - UTF-8</td>
+</tr>
+<tr>
+<td>$bRetString</td>
+<td><strong>[optional]</strong> Flags that indicate whether to return a String or a DllStruct (default True : String)</td>
+</tr>
+</table>
+
+<h2>Return Value</h2>
+<table class="noborder">
+<tr>
+<td style="width:10%" class="valign-top">Success:</td>
+<td style="width:90%">A string or a DllStruct containing a multibyte string</td>
+</tr>
+<tr>
+<td class="valign-top">Failure:</td>
+<td>Sets the @error flag to non-zero</td>
+</tr>
+</table>
+
+<h2>Related</h2>
+<p><a href="_WinAPI_MultiByteToWideChar.htm">_WinAPI_MultiByteToWideChar</a></p>
+
+<h2>See Also</h2>
+<p>Search <a href="http://msdn.microsoft.com/query/dev10.query?appId=Dev10IDEF1&l=EN-US&k=k(WideCharToMultiByte);k(DevLang-C);k(TargetOS-WINDOWS)&rd=true">WideCharToMultiByte</a> in MSDN  Library.
+</p>
+
+</body>
+</html>

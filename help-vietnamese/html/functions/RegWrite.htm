@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Function RegWrite</title>
+<meta charset="utf-8">
+<link href="../css/default.css" rel="stylesheet">
+</head>
+
+<body>
+<h1 class="small">Function Reference</h1>
+<hr style="height:0px">
+<h1>RegWrite</h1>
+<p class="funcdesc">Creates a key or value in the registry.<br /></p>
+<p class="codeheader">
+RegWrite ( "keyname" [, "valuename", "type", value] )<br />
+</p>
+
+<h2>Parameters</h2>
+<table>
+<tr>
+<td style="width:15%">keyname</td>
+<td style="width:85%">The registry key to write to. If no other parameters are specified this key will simply be created.</td>
+</tr>
+<tr>
+<td>valuename</td>
+<td><strong>[optional]</strong> The valuename to write to.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><strong>[optional]</strong> Type of key to write: "REG_SZ", "REG_MULTI_SZ", "REG_EXPAND_SZ", "REG_DWORD", "REG_QWORD", or "REG_BINARY".</td>
+</tr>
+<tr>
+<td>value</td>
+<td><strong>[optional]</strong> The value to write.</td>
+</tr>
+</table>
+
+<h2>Return Value</h2>
+<table class="noborder">
+<tr>
+<td style="width:10%" class="valign-top">Success:</td>
+<td style="width:90%">1.</td>
+</tr>
+<tr>
+<td class="valign-top">Failure:</td>
+<td>0 and sets the @error flag to non-zero if error writing registry key or value.</td>
+</tr>
+<tr>
+<td class="valign-top">@error:</td>
+<td> 1 = unable to open requested key<br />
+&nbsp;2 = unable to open requested main key<br />
+&nbsp;3 = unable to remote connect to the registry<br />
+-1 = unable to open requested value<br />
+-2 = value type not supported</td>
+</tr>
+</table>
+
+<h2>Remarks</h2>
+<p>A registry key must start with "HKEY_LOCAL_MACHINE" ("HKLM") or "HKEY_USERS" ("HKU") or "HKEY_CURRENT_USER" ("HKCU") or "HKEY_CLASSES_ROOT" ("HKCR") or "HKEY_CURRENT_CONFIG" ("HKCC").<br />
+<br />
+When running on 64-bit Windows if you want to write a key or value specific to the 64-bit environment you have to suffix the HK... with 64 i.e. HKLM64.<br />
+<br />
+AutoIt supports registry keys of type REG_BINARY, REG_SZ, REG_MULTI_SZ, REG_EXPAND_SZ, REG_QWORD, and REG_DWORD.<br />
+<br />
+To access the <strong>(Default)</strong> value use <strong>""</strong> (an empty string) for the valuename.<br />
+<br />
+When writing a REG_MULTI_SZ key you must separate each value with @LF. The value must NOT end with @LF unless you want an empty substring (see example).<br />
+<br />
+It is possible to access remote registries by using a keyname in the form "\\computername\keyname". To use this feature you must have the correct access rights.<br />
+</p>
+
+<h2>Related</h2>
+<p><a href="RegDelete.htm">RegDelete</a>, <a href="RegEnumKey.htm">RegEnumKey</a>, <a href="RegEnumVal.htm">RegEnumVal</a>, <a href="RegRead.htm">RegRead</a></p>
+
+<h2 class="bottom">Example</h2>
+<script type="text/javascript">
+if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) // IE (4+) only
+function copyToClipboard(section) {
+if (window.clipboardData && clipboardData.setData) {
+clipboardData.setData("text", section + "\r\n");
+alert("Copied to clipboard");
+}
+}
+</script>
+<div class="codeSnippetContainer">
+	<div class="codeSnippetContainerTabs">
+<script type="text/javascript">
+if (document.URL.match(/^mk:@MSITStore:/i)) {
+document.write('<div class="codeSnippetContainerTab codeSnippetContainerTabSingle" dir="ltr">');
+document.write('<object id=hhctrl type="application/x-oleobject" classid="clsid:adb880a6-d8ff-11cf-9377-00aa003b7a11"><param name="Command" value="ShortCut"><param name="Font" value="Verdana,10pt"><param name="Text" value="Text:Open this Script"><param name="Item1" value=",Examples\\HelpFile\\RegWrite.au3,"></object>');
+document.write('<\/div>');
+}
+</script>
+</div>
+
+<div class="codeSnippetContainerCodeContainer">
+<div class="codeSnippetToolBar">
+<div class="codeSnippetToolBarText">
+<script type="text/javascript">
+if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) // IE (4+) only
+document.write('<a href="#" id="copy" onclick="copyToClipboard(document.getElementById(\'copytext1\').innerText)">Copy to clipboard<\/a>');
+</script>
+</div>
+</div>
+<div class="codeSnippetContainerCode" dir="ltr" id="copytext1">
+<pre>
+<span><span class="S1">; Write a single REG_SZ value</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"Hello this is a test"</span><span class="S8">)</span>
+
+<span class="S1">; Write the REG_MULTI_SZ value of "line1" and "line2"</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey1"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_MULTI_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"line1"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"line2"</span><span class="S8">)</span>
+
+<span class="S1">; Write the REG_MULTI_SZ value of "line1"</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey2"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_MULTI_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"line1"</span><span class="S8">)</span>
+
+<span class="S1">; always add and extra null string</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey3"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_MULTI_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"line1"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"line2"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S8">)</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey4"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_MULTI_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"line1"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><span class="S7">"line2"</span><span class="S0"> </span><span class="S8">&amp;</span><span class="S0"> </span><a class="codeSnippetLink" href="../macros.htm#@CRLF"><span class="S6">@CRLF</span></a><span class="S8">)</span>
+
+<span class="S1">; empty REG_MULTI_SZ</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"TestKey5"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">"REG_MULTI_SZ"</span><span class="S8">,</span><span class="S0"> </span><span class="S7">""</span><span class="S8">)</span>
+
+<span class="S1">; create just the key</span>
+<a class="codeSnippetLink" href="../functions/RegWrite.htm"><span class="S4">RegWrite</span></a><span class="S8">(</span><span class="S7">"HKEY_CURRENT_USER\Software\Test1"</span><span class="S8">)</span>
+<span class="S0"></span></span>
+</pre>
+</div>
+</div>
+</div>
+</body>
+</html>
