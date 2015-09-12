@@ -1,30 +1,30 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>Keyword #NoTrayIcon</title>
+<title>Từ khóa #NoTrayIcon</title>
 <meta charset="utf-8">
 <link href="../css/default.css" rel="stylesheet">
 </head>
 
 <body>
-<h1 class="small">Keyword Reference</h1>
+<h1 class="small">Tài liệu tham khảo từ khóa</h1>
 <hr style="height:0px">
 <h1>#NoTrayIcon</h1>
-<p class="funcdesc">Indicates that the AutoIt tray icon will not be shown when the script starts.<br /></p>
+<p class="funcdesc">Chỉ ra rằng các biểu tượng AutoIt trên khay sẽ không được hiển thị khi kịch bản bắt đầu.<br /></p>
 <p class="codeheader">
 <strong>#NoTrayIcon</strong><br />
 </p>
 
-<h2>Remarks</h2>
-<p>It is possible to use <a href="../functions/AutoItSetOption.htm#TrayIconHide">Opt("TrayIconHide", 1)</a> to remove the AutoIt tray icon but it will still be visible for a second when the script starts. Placing the #NoTrayIcon directive at the top of your script will stop the icon from being shown at startup.<br />
+<h2>Chú thích</h2>
+<p>Có thể sử dụng <a href="../functions/AutoItSetOption.htm#TrayIconHide">Opt("TrayIconHide", 1)</a> để loại bỏ các biểu tượng AutoIt trên khay nhưng nó vẫn sẽ được hiển thị trong một giây khi kịch bản bắt đầu. Đặt #NoTrayIcon ở trên cùng của kịch bản của bạn sẽ ngăn chặn các biểu tượng được hiển thị khi khởi động.<br />
 <br />
-You may still turn the icon back on later in the script using <a href="../functions/AutoItSetOption.htm#TrayIconHide">Opt("TrayIconHide", 0)</a><br />
+Bạn vẫn có thể đưa các biểu tượng trở về sau trong các kịch bản sử dụng <a href="../functions/AutoItSetOption.htm#TrayIconHide">Opt("TrayIconHide", 0)</a><br />
 </p>
 
-<h2>Related</h2>
+<h2>Liên quan:</h2>
 <p><a href="../functions/AutoItSetOption.htm#TrayIconHide">TrayIconHide (Option)</a></p>
 
-<h2 class="bottom">Example</h2>
+<h2 class="bottom">Ví dụ</h2>
 <script type="text/javascript">
 if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) // IE (4+) only
 function copyToClipboard(section) {
